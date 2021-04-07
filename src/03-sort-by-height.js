@@ -1,16 +1,25 @@
-/**
- * Given an array with heights, sort them except if the value is -1.
- *
- * @param {Array} arr
- * @return {Array}
- *
- * @example
- * arr = [-1, 150, 190, 170, -1, -1, 160, 180]
- *
- * The result should be [-1, 150, 160, 170, -1, -1, 180, 190]
- */
-function sortByHeight(/* arr */) {
-  throw new Error('Not implemented');
+function sortByHeight(array) {
+  const indexArray = [];
+  const numberArray = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === -1) {
+      indexArray.push(i);
+    } else {
+      numberArray.push(array[i]);
+    }
+  }
+  numberArray.sort((a, b) => (a - b));
+  const newArray = [];
+  let j = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (indexArray.includes(i)) {
+      newArray[i] = -1;
+    } else {
+      newArray[i] = numberArray[j];
+      j++;
+    }
+  }
+  return newArray;
 }
 
 module.exports = sortByHeight;
